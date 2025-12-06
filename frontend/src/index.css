@@ -1,28 +1,29 @@
 @import "tailwindcss";
 
 :root {
-  /* Subtle Color Palette - 3 colors only */
-  --color-primary: #2D3748;      /* Dark gray-blue - primary actions */
-  --color-secondary: #4A5568;    /* Medium gray - secondary elements */
-  --color-accent: #718096;       /* Light gray - accents, borders */
-  --color-bg: #FAFAFA;           /* Off-white background */
-  --color-surface: #FFFFFF;       /* White surfaces */
-  --color-text: #1A202C;         /* Dark text */
-  --color-text-light: #718096;   /* Light text */
-  --color-border: #E2E8F0;       /* Subtle borders */
-  --color-error: #E53E3E;        /* Error states */
-  --color-success: #38A169;      /* Success states */
+  /* Muted Color Palette - Refined & Professional */
+  --color-primary: #475569;        /* Slate Blue - professional, calm */
+  --color-primary-dark: #334155;    /* Darker slate for hover states */
+  --color-secondary: #64748B;      /* Warm Gray - text, borders */
+  --color-accent: #0891B2;          /* Soft Teal - links, highlights */
+  --color-bg: #F8FAFC;              /* Off-White/Cream - soft background */
+  --color-surface: #FFFFFF;         /* White surfaces */
+  --color-text: #1E293B;            /* Dark Charcoal - headings */
+  --color-text-light: #64748B;     /* Warm Gray - light text */
+  --color-border: #E2E8F0;          /* Subtle borders */
+  --color-success: #059669;         /* Sage Green - subtle success */
+  --color-error: #DC2626;           /* Muted Red - understated alerts */
+  --color-warning: #D97706;         /* Warm Amber - warnings */
+  --color-premium: #7C3AED;          /* Dusty Purple - premium features */
 }
 
 * {
-  margin: 0;
-  padding: 0;
   box-sizing: border-box;
 }
 
 html, body {
-  margin: 0;
-  padding: 0;
+  /* margin: 0; */
+  /* padding: 0; */
   width: 100%;
   height: 100%;
 }
@@ -36,6 +37,7 @@ body {
   background-color: var(--color-bg);
   color: var(--color-text);
   line-height: 1.6;
+  letter-spacing: -0.01em;
 }
 
 #root {
@@ -56,19 +58,64 @@ body {
   border-color: var(--color-border);
 }
 
-/* Smooth transitions */
-* {
-  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+
+/* Animations */
+@keyframes slide-in-from-top {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.animate-in {
+  animation: slide-in-from-top 0.2s ease-out;
+}
+
+.fade-in {
+  animation: fade-in 0.3s ease-out;
+}
+
+/* Smooth scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-secondary);
 }
 
 /* Base styles for common elements */
 a {
-  color: var(--color-primary);
+  color: var(--color-accent);
   text-decoration: none;
+  transition: color 0.2s ease;
 }
 
 a:hover {
-  color: var(--color-secondary);
+  color: var(--color-primary);
 }
 
 button {
@@ -84,8 +131,10 @@ input, select, textarea {
 h1, h2, h3, h4, h5, h6 {
   font-weight: 600;
   color: var(--color-text);
+  letter-spacing: -0.02em;
 }
 
-p {
-  color: var(--color-text);
+h1 {
+  font-weight: 700;
 }
+

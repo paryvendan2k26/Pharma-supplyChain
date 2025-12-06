@@ -117,48 +117,48 @@ export default function WarehouseDashboard() {
 
   return (
     <Layout>
-      <div className="space-y-8">
+      <div className="space-y-6 sm:space-y-8">
         {/* Header */}
         <div>
-          <h1 className="text-3xl font-semibold text-text mb-2">Warehouse Dashboard</h1>
-          <p className="text-text-light">Manage inventory and product storage</p>
+          <h1 className="text-2xl sm:text-3xl font-semibold text-text mb-2">Warehouse Dashboard</h1>
+          <p className="text-sm sm:text-base text-text-light">Manage inventory and product storage</p>
         </div>
 
         {/* Tabs */}
-        <div className="border-b border-border">
-          <nav className="flex gap-1">
-            <button onClick={() => setActiveTab('transfer')} className={`px-4 py-2 text-sm font-medium transition-colors ${activeTab === 'transfer' ? 'text-primary border-b-2 border-primary' : 'text-text-light hover:text-text'}`}>
+        <div className="border-b border-border overflow-x-auto -mx-4 sm:mx-0">
+          <nav className="flex gap-1 px-4 sm:px-0 min-w-max sm:min-w-0">
+            <button onClick={() => setActiveTab('transfer')} className={`px-3 sm:px-4 py-2 text-xs sm:text-sm font-medium transition-colors whitespace-nowrap ${activeTab === 'transfer' ? 'text-primary border-b-2 border-primary' : 'text-text-light hover:text-text'}`}>
               Transfer
             </button>
-            <button onClick={() => setActiveTab('inventory')} className={`px-4 py-2 text-sm font-medium transition-colors ${activeTab === 'inventory' ? 'text-primary border-b-2 border-primary' : 'text-text-light hover:text-text'}`}>
+            <button onClick={() => setActiveTab('inventory')} className={`px-3 sm:px-4 py-2 text-xs sm:text-sm font-medium transition-colors whitespace-nowrap ${activeTab === 'inventory' ? 'text-primary border-b-2 border-primary' : 'text-text-light hover:text-text'}`}>
               All Products
             </button>
-            <button onClick={() => setActiveTab('by-sender')} className={`px-4 py-2 text-sm font-medium transition-colors ${activeTab === 'by-sender' ? 'text-primary border-b-2 border-primary' : 'text-text-light hover:text-text'}`}>
+            <button onClick={() => setActiveTab('by-sender')} className={`px-3 sm:px-4 py-2 text-xs sm:text-sm font-medium transition-colors whitespace-nowrap ${activeTab === 'by-sender' ? 'text-primary border-b-2 border-primary' : 'text-text-light hover:text-text'}`}>
               By Sender
             </button>
-            <button onClick={() => setActiveTab('partnerships')} className={`px-4 py-2 text-sm font-medium transition-colors ${activeTab === 'partnerships' ? 'text-primary border-b-2 border-primary' : 'text-text-light hover:text-text'}`}>
+            <button onClick={() => setActiveTab('partnerships')} className={`px-3 sm:px-4 py-2 text-xs sm:text-sm font-medium transition-colors whitespace-nowrap ${activeTab === 'partnerships' ? 'text-primary border-b-2 border-primary' : 'text-text-light hover:text-text'}`}>
               Partnerships
             </button>
           </nav>
         </div>
 
         {/* Stats */}
-        <div className="grid md:grid-cols-3 gap-4">
-          <div className="bg-surface rounded-lg border border-border p-6">
-            <div className="text-2xl font-semibold text-text">{products.length}</div>
-            <div className="text-sm text-text-light mt-1">Total Products</div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="bg-surface rounded-2xl border border-border p-6 sm:p-8 shadow-soft hover:shadow-soft-lg transition-all">
+            <div className="text-3xl sm:text-4xl font-bold text-text mb-2">{products.length}</div>
+            <div className="text-sm font-medium text-text-light">Total Products</div>
           </div>
-          <div className="bg-surface rounded-lg border border-border p-6">
-            <div className="text-2xl font-semibold text-text">
+          <div className="bg-surface rounded-2xl border border-border p-6 sm:p-8 shadow-soft hover:shadow-soft-lg transition-all">
+            <div className="text-3xl sm:text-4xl font-bold text-text mb-2">
               {products.filter(p => p.batchBlockchainId).length}
             </div>
-            <div className="text-sm text-text-light mt-1">Batched Products</div>
+            <div className="text-sm font-medium text-text-light">Batched Products</div>
           </div>
-          <div className="bg-surface rounded-lg border border-border p-6">
-            <div className="text-2xl font-semibold text-text">
+          <div className="bg-surface rounded-2xl border border-border p-6 sm:p-8 shadow-soft hover:shadow-soft-lg transition-all">
+            <div className="text-3xl sm:text-4xl font-bold text-text mb-2">
               {products.filter(p => !p.batchBlockchainId).length}
             </div>
-            <div className="text-sm text-text-light mt-1">Single Products</div>
+            <div className="text-sm font-medium text-text-light">Single Products</div>
           </div>
         </div>
 
@@ -166,14 +166,14 @@ export default function WarehouseDashboard() {
         {activeTab === 'transfer' && (
           <>
         {/* Batch Transfer Form */}
-        <div className="bg-surface rounded-lg border border-border p-6">
-          <h2 className="text-lg font-semibold text-text mb-4">Transfer Entire Batch</h2>
-          <form onSubmit={handleBatchTransfer} className="space-y-4">
-            <div className="grid md:grid-cols-3 gap-4">
+        <div className="bg-surface rounded-2xl border border-border p-6 sm:p-8 shadow-soft">
+          <h2 className="text-lg sm:text-xl font-bold text-text mb-6">Transfer Entire Batch</h2>
+          <form onSubmit={handleBatchTransfer} className="space-y-5">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
               <div>
-                <label className="block text-sm font-medium text-text mb-1.5">Batch ID</label>
+                <label className="block text-sm font-semibold text-text mb-2">Batch ID</label>
                 <input
-                  className="w-full px-3 py-2 border border-border rounded-md focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary bg-surface text-text font-mono text-sm"
+                  className="w-full px-4 py-3 border-2 border-border rounded-xl focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary bg-surface text-text font-mono text-sm transition-all"
                   placeholder="Batch ID"
                   value={transferBatchData.batchId}
                   onChange={e => setTransferBatchData({...transferBatchData, batchId: e.target.value})}
@@ -181,9 +181,9 @@ export default function WarehouseDashboard() {
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-text mb-1.5">Recipient Address</label>
+                <label className="block text-sm font-semibold text-text mb-2">Recipient Address</label>
                 <input
-                  className="w-full px-3 py-2 border border-border rounded-md focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary bg-surface text-text font-mono text-sm"
+                  className="w-full px-4 py-3 border-2 border-border rounded-xl focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary bg-surface text-text font-mono text-sm transition-all"
                   placeholder="0x..."
                   value={transferBatchData.toAddress}
                   onChange={e => setTransferBatchData({...transferBatchData, toAddress: e.target.value})}
@@ -191,9 +191,9 @@ export default function WarehouseDashboard() {
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-text mb-1.5">Location (Optional)</label>
+                <label className="block text-sm font-semibold text-text mb-2">Location (Optional)</label>
                 <input
-                  className="w-full px-3 py-2 border border-border rounded-md focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary bg-surface text-text"
+                  className="w-full px-4 py-3 border-2 border-border rounded-xl focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary bg-surface text-text transition-all text-[15px]"
                   placeholder="Destination location"
                   value={transferBatchData.location}
                   onChange={e => setTransferBatchData({...transferBatchData, location: e.target.value})}
@@ -203,9 +203,19 @@ export default function WarehouseDashboard() {
             <button
               type="submit"
               disabled={transferBatchLoading}
-              className="bg-primary text-white px-6 py-2 rounded-md font-medium hover:bg-secondary focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+              className="bg-primary text-white px-8 py-3.5 rounded-xl font-semibold text-base hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed transition-all shadow-soft hover:shadow-soft-lg transform hover:-translate-y-0.5 active:translate-y-0"
             >
-              {transferBatchLoading ? 'Transferring Batch...' : 'Transfer Entire Batch'}
+              {transferBatchLoading ? (
+                <span className="flex items-center justify-center gap-2">
+                  <svg className="animate-spin h-5 w-5" fill="none" viewBox="0 0 24 24">
+                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                  </svg>
+                  Transferring Batch...
+                </span>
+              ) : (
+                'Transfer Entire Batch'
+              )}
             </button>
             <p className="text-xs text-text-light">
               This will transfer all products in the batch to the recipient address
@@ -214,14 +224,14 @@ export default function WarehouseDashboard() {
         </div>
 
         {/* Transfer Form */}
-        <div className="bg-surface rounded-lg border border-border p-6">
-          <h2 className="text-lg font-semibold text-text mb-4">Transfer Product</h2>
-          <form onSubmit={handleTransfer} className="space-y-4">
-            <div className="grid md:grid-cols-4 gap-4">
+        <div className="bg-surface rounded-2xl border border-border p-6 sm:p-8 shadow-soft">
+          <h2 className="text-lg sm:text-xl font-bold text-text mb-6">Transfer Product</h2>
+          <form onSubmit={handleTransfer} className="space-y-5">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
               <div>
-                <label className="block text-sm font-medium text-text mb-1.5">Product ID</label>
+                <label className="block text-sm font-semibold text-text mb-2">Product ID</label>
                 <input
-                  className="w-full px-3 py-2 border border-border rounded-md focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary bg-surface text-text font-mono text-sm"
+                  className="w-full px-4 py-3 border-2 border-border rounded-xl focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary bg-surface text-text font-mono text-sm transition-all"
                   placeholder="Product blockchain ID"
                   value={transferData.productId}
                   onChange={e => setTransferData({...transferData, productId: e.target.value})}
@@ -229,9 +239,9 @@ export default function WarehouseDashboard() {
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-text mb-1.5">Recipient Address</label>
+                <label className="block text-sm font-semibold text-text mb-2">Recipient Address</label>
                 <input
-                  className="w-full px-3 py-2 border border-border rounded-md focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary bg-surface text-text font-mono text-sm"
+                  className="w-full px-4 py-3 border-2 border-border rounded-xl focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary bg-surface text-text font-mono text-sm transition-all"
                   placeholder="0x..."
                   value={transferData.toAddress}
                   onChange={e => setTransferData({...transferData, toAddress: e.target.value})}
@@ -239,12 +249,12 @@ export default function WarehouseDashboard() {
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-text mb-1.5">Quantity</label>
+                <label className="block text-sm font-semibold text-text mb-2">Quantity</label>
                 <input
                   type="number"
                   min="1"
                   max="50"
-                  className="w-full px-3 py-2 border border-border rounded-md focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary bg-surface text-text"
+                  className="w-full px-4 py-3 border-2 border-border rounded-xl focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary bg-surface text-text transition-all text-[15px]"
                   placeholder="1"
                   value={transferData.quantity}
                   onChange={e => setTransferData({...transferData, quantity: Math.max(1, Math.min(50, parseInt(e.target.value) || 1))})}
@@ -252,9 +262,9 @@ export default function WarehouseDashboard() {
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-text mb-1.5">Location (Optional)</label>
+                <label className="block text-sm font-semibold text-text mb-2">Location (Optional)</label>
                 <input
-                  className="w-full px-3 py-2 border border-border rounded-md focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary bg-surface text-text"
+                  className="w-full px-4 py-3 border-2 border-border rounded-xl focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary bg-surface text-text transition-all text-[15px]"
                   placeholder="Destination location"
                   value={transferData.location}
                   onChange={e => setTransferData({...transferData, location: e.target.value})}
@@ -264,15 +274,25 @@ export default function WarehouseDashboard() {
             <button
               type="submit"
               disabled={loading}
-              className="bg-primary text-white px-6 py-2 rounded-md font-medium hover:bg-secondary focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+              className="bg-primary text-white px-8 py-3.5 rounded-xl font-semibold text-base hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed transition-all shadow-soft hover:shadow-soft-lg transform hover:-translate-y-0.5 active:translate-y-0"
             >
-              {loading ? 'Transferring...' : `Transfer ${transferData.quantity} Product(s)`}
+              {loading ? (
+                <span className="flex items-center justify-center gap-2">
+                  <svg className="animate-spin h-5 w-5" fill="none" viewBox="0 0 24 24">
+                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                  </svg>
+                  Transferring...
+                </span>
+              ) : (
+                `Transfer ${transferData.quantity} Product(s)`
+              )}
             </button>
           </form>
           
           {/* Transfer Result with Manufacturer Info */}
           {transferResult && (
-            <div className="mt-4 p-4 bg-green-50 border border-green-200 rounded-md">
+            <div className="mt-4 p-4 bg-success/10 border border-success/20 rounded-lg shadow-soft">
               <p className="text-sm font-medium text-success mb-2">{transferResult.message}</p>
               {transferResult.manufacturer && (
                 <div className="text-sm text-text-light">
@@ -289,53 +309,49 @@ export default function WarehouseDashboard() {
         </div>
 
         {/* Products Table */}
-        <div className="bg-surface rounded-lg border border-border overflow-hidden">
-          <div className="px-6 py-4 border-b border-border">
-            <h2 className="text-lg font-semibold text-text">Inventory</h2>
+        <div className="bg-surface rounded-xl border border-border overflow-hidden shadow-soft">
+          <div className="px-4 sm:px-6 py-4 border-b border-border bg-bg/50">
+            <h2 className="text-base sm:text-lg font-semibold text-text">Inventory</h2>
           </div>
-          <div className="overflow-x-auto">
-            <table className="w-full">
-              <thead className="bg-bg">
-                <tr>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-text-light uppercase tracking-wider">ID</th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-text-light uppercase tracking-wider">Name</th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-text-light uppercase tracking-wider">Batch</th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-text-light uppercase tracking-wider">QR Code</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-border">
-                {products.length === 0 ? (
-                  <tr>
-                    <td colSpan="4" className="px-6 py-8 text-center text-text-light">
-                      No products in warehouse inventory yet.
-                    </td>
-                  </tr>
-                ) : (
-                  products.map(p => (
-                    <tr key={p._id} className="hover:bg-bg transition-colors">
-                      <td className="px-6 py-4 whitespace-nowrap text-sm font-mono text-text">{p.uniqueProductId || p.blockchainId}</td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-text">{p.name}</td>
-                      <td className="px-6 py-4 whitespace-nowrap">
-                        {p.batchBlockchainId ? (
-                          <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-bg text-secondary border border-border">
-                            Batch #{p.batchBlockchainId}
-                          </span>
-                        ) : (
-                          <span className="text-text-light text-sm">—</span>
-                        )}
-                      </td>
-                      {/* <td className="px-6 py-4 whitespace-nowrap">
-                        {p.qrCodeUrl ? (
-                          <img src={p.qrCodeUrl} className="w-16 h-16 object-contain" alt="QR Code" />
-                        ) : (
-                          <span className="text-text-light text-sm">—</span>
-                        )}
-                      </td> */}
+          <div className="overflow-x-auto -mx-4 sm:mx-0">
+            <div className="inline-block min-w-full align-middle">
+              <div className="overflow-hidden">
+                <table className="min-w-full divide-y divide-border">
+                  <thead className="bg-bg">
+                    <tr>
+                      <th className="px-3 sm:px-6 py-3 text-left text-xs font-medium text-text-light uppercase tracking-wider">ID</th>
+                      <th className="px-3 sm:px-6 py-3 text-left text-xs font-medium text-text-light uppercase tracking-wider">Name</th>
+                      <th className="px-3 sm:px-6 py-3 text-left text-xs font-medium text-text-light uppercase tracking-wider">Batch</th>
                     </tr>
-                  ))
-                )}
-              </tbody>
-            </table>
+                  </thead>
+                  <tbody className="divide-y divide-border bg-surface">
+                    {products.length === 0 ? (
+                      <tr>
+                        <td colSpan="3" className="px-4 sm:px-6 py-8 text-center text-text-light">
+                          No products in warehouse inventory yet.
+                        </td>
+                      </tr>
+                    ) : (
+                      products.map(p => (
+                        <tr key={p._id} className="hover:bg-bg transition-colors">
+                          <td className="px-3 sm:px-6 py-4 whitespace-nowrap text-xs sm:text-sm font-mono text-text">{p.uniqueProductId || p.blockchainId}</td>
+                          <td className="px-3 sm:px-6 py-4 text-sm text-text">{p.name}</td>
+                          <td className="px-3 sm:px-6 py-4 whitespace-nowrap">
+                            {p.batchBlockchainId ? (
+                              <span className="inline-flex items-center px-2 sm:px-2.5 py-0.5 rounded-full text-xs font-medium bg-bg text-secondary border border-border">
+                                Batch #{p.batchBlockchainId}
+                              </span>
+                            ) : (
+                              <span className="text-text-light text-xs sm:text-sm">—</span>
+                            )}
+                          </td>
+                        </tr>
+                      ))
+                    )}
+                  </tbody>
+                </table>
+              </div>
+            </div>
           </div>
         </div>
           </>
@@ -343,53 +359,49 @@ export default function WarehouseDashboard() {
 
         {/* Inventory Tab */}
         {activeTab === 'inventory' && (
-          <div className="bg-surface rounded-lg border border-border overflow-hidden">
-            <div className="px-6 py-4 border-b border-border">
-              <h2 className="text-lg font-semibold text-text">Inventory</h2>
+          <div className="bg-surface rounded-xl border border-border overflow-hidden shadow-soft">
+            <div className="px-4 sm:px-6 py-4 border-b border-border bg-bg/50">
+              <h2 className="text-base sm:text-lg font-semibold text-text">Inventory</h2>
             </div>
-            <div className="overflow-x-auto">
-              <table className="w-full">
-                <thead className="bg-bg">
-                  <tr>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-text-light uppercase tracking-wider">ID</th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-text-light uppercase tracking-wider">Name</th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-text-light uppercase tracking-wider">Batch</th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-text-light uppercase tracking-wider">QR Code</th>
-                  </tr>
-                </thead>
-                <tbody className="divide-y divide-border">
-                  {products.length === 0 ? (
-                    <tr>
-                      <td colSpan="4" className="px-6 py-8 text-center text-text-light">
-                        No products in warehouse inventory yet.
-                      </td>
-                    </tr>
-                  ) : (
-                    products.map(p => (
-                      <tr key={p._id} className="hover:bg-bg transition-colors">
-                        <td className="px-6 py-4 whitespace-nowrap text-sm font-mono text-text">{p.uniqueProductId || p.blockchainId}</td>
-                        <td className="px-6 py-4 whitespace-nowrap text-sm text-text">{p.name}</td>
-                        <td className="px-6 py-4 whitespace-nowrap">
-                          {p.batchBlockchainId ? (
-                            <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-bg text-secondary border border-border">
-                              Batch #{p.batchBlockchainId}
-                            </span>
-                          ) : (
-                            <span className="text-text-light text-sm">—</span>
-                          )}
-                        </td>
-                        {/* <td className="px-6 py-4 whitespace-nowrap">
-                          {p.qrCodeUrl ? (
-                            <img src={p.qrCodeUrl} className="w-16 h-16 object-contain" alt="QR Code" />
-                          ) : (
-                            <span className="text-text-light text-sm">—</span>
-                          )}
-                        </td> */}
+            <div className="overflow-x-auto -mx-4 sm:mx-0">
+              <div className="inline-block min-w-full align-middle">
+                <div className="overflow-hidden">
+                  <table className="min-w-full divide-y divide-border">
+                    <thead className="bg-bg">
+                      <tr>
+                        <th className="px-3 sm:px-6 py-3 text-left text-xs font-medium text-text-light uppercase tracking-wider">ID</th>
+                        <th className="px-3 sm:px-6 py-3 text-left text-xs font-medium text-text-light uppercase tracking-wider">Name</th>
+                        <th className="px-3 sm:px-6 py-3 text-left text-xs font-medium text-text-light uppercase tracking-wider">Batch</th>
                       </tr>
-                    ))
-                  )}
-                </tbody>
-              </table>
+                    </thead>
+                    <tbody className="divide-y divide-border bg-surface">
+                      {products.length === 0 ? (
+                        <tr>
+                          <td colSpan="3" className="px-4 sm:px-6 py-8 text-center text-text-light">
+                            No products in warehouse inventory yet.
+                          </td>
+                        </tr>
+                      ) : (
+                        products.map(p => (
+                          <tr key={p._id} className="hover:bg-bg transition-colors">
+                            <td className="px-3 sm:px-6 py-4 whitespace-nowrap text-xs sm:text-sm font-mono text-text">{p.uniqueProductId || p.blockchainId}</td>
+                            <td className="px-3 sm:px-6 py-4 text-sm text-text">{p.name}</td>
+                            <td className="px-3 sm:px-6 py-4 whitespace-nowrap">
+                              {p.batchBlockchainId ? (
+                                <span className="inline-flex items-center px-2 sm:px-2.5 py-0.5 rounded-full text-xs font-medium bg-bg text-secondary border border-border">
+                                  Batch #{p.batchBlockchainId}
+                                </span>
+                              ) : (
+                                <span className="text-text-light text-xs sm:text-sm">—</span>
+                              )}
+                            </td>
+                          </tr>
+                        ))
+                      )}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
             </div>
           </div>
         )}

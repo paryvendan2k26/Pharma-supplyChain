@@ -68,31 +68,31 @@ export default function PartnershipManager() {
   return (
     <div className="space-y-6">
       {/* Pending Requests */}
-      <div className="bg-white p-4 rounded shadow">
-        <h2 className="font-semibold mb-3">Pending Partnership Requests</h2>
+      <div className="bg-surface p-6 rounded-xl border border-border shadow-soft">
+        <h2 className="font-semibold text-text mb-4">Pending Partnership Requests</h2>
         {requests.length === 0 ? (
-          <p className="text-gray-600 text-sm">No pending requests</p>
+          <p className="text-text-light text-sm">No pending requests</p>
         ) : (
-          <div className="space-y-2">
+          <div className="space-y-3">
             {requests.map(req => (
-              <div key={req._id} className="border p-3 rounded">
+              <div key={req._id} className="border border-border p-4 rounded-lg bg-bg shadow-soft">
                 <div className="flex justify-between items-center">
                   <div>
-                    <div className="font-medium">{req.sender?.name} ({req.sender?.companyName})</div>
-                    <div className="text-sm text-gray-600">{req.sender?.role}</div>
+                    <div className="font-medium text-text">{req.sender?.name} ({req.sender?.companyName})</div>
+                    <div className="text-sm text-text-light">{req.sender?.role}</div>
                   </div>
                   <div className="flex gap-2">
                     <button
                       onClick={() => respondToRequest(req._id, 'accepted')}
                       disabled={loading}
-                      className="bg-green-500 text-white px-3 py-1 rounded text-sm disabled:opacity-50"
+                      className="bg-success text-white px-4 py-1.5 rounded-lg text-sm disabled:opacity-50 transition-all shadow-soft hover:shadow-soft-lg"
                     >
                       Accept
                     </button>
                     <button
                       onClick={() => respondToRequest(req._id, 'rejected')}
                       disabled={loading}
-                      className="bg-red-500 text-white px-3 py-1 rounded text-sm disabled:opacity-50"
+                      className="bg-error text-white px-4 py-1.5 rounded-lg text-sm disabled:opacity-50 transition-all shadow-soft hover:shadow-soft-lg"
                     >
                       Reject
                     </button>
@@ -105,18 +105,18 @@ export default function PartnershipManager() {
       </div>
 
       {/* My Partnerships */}
-      <div className="bg-white p-4 rounded shadow">
-        <h2 className="font-semibold mb-3">My Partnerships</h2>
+      <div className="bg-surface p-6 rounded-xl border border-border shadow-soft">
+        <h2 className="font-semibold text-text mb-4">My Partnerships</h2>
         {partnerships.filter(p => p.status === 'accepted').length === 0 ? (
-          <p className="text-gray-600 text-sm">No active partnerships</p>
+          <p className="text-text-light text-sm">No active partnerships</p>
         ) : (
-          <div className="space-y-2">
+          <div className="space-y-3">
             {partnerships.filter(p => p.status === 'accepted').map(p => (
-              <div key={p._id} className="border p-3 rounded">
-                <div className="font-medium">
+              <div key={p._id} className="border border-border p-4 rounded-lg bg-bg shadow-soft">
+                <div className="font-medium text-text">
                   {p.receiver?.name || p.sender?.name} ({p.receiver?.companyName || p.sender?.companyName})
                 </div>
-                <div className="text-sm text-gray-600">{p.receiver?.role || p.sender?.role}</div>
+                <div className="text-sm text-text-light">{p.receiver?.role || p.sender?.role}</div>
               </div>
             ))}
           </div>
@@ -124,19 +124,19 @@ export default function PartnershipManager() {
       </div>
 
       {/* Request Partnership */}
-      <div className="bg-white p-4 rounded shadow">
-        <h2 className="font-semibold mb-3">Request Partnership</h2>
-        <div className="space-y-2">
+      <div className="bg-surface p-6 rounded-xl border border-border shadow-soft">
+        <h2 className="font-semibold text-text mb-4">Request Partnership</h2>
+        <div className="space-y-3">
           {users.map(user => (
-            <div key={user._id} className="border p-3 rounded flex justify-between items-center">
+            <div key={user._id} className="border border-border p-4 rounded-lg bg-bg shadow-soft flex justify-between items-center">
               <div>
-                <div className="font-medium">{user.name} ({user.companyName})</div>
-                <div className="text-sm text-gray-600">{user.role}</div>
+                <div className="font-medium text-text">{user.name} ({user.companyName})</div>
+                <div className="text-sm text-text-light">{user.role}</div>
               </div>
               <button
                 onClick={() => requestPartnership(user._id)}
                 disabled={loading}
-                className="bg-primary text-white px-3 py-1 rounded text-sm disabled:opacity-50"
+                className="bg-primary text-white px-4 py-1.5 rounded-lg text-sm disabled:opacity-50 transition-all shadow-soft hover:shadow-soft-lg hover:bg-primary-dark"
               >
                 Request
               </button>
