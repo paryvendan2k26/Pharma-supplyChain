@@ -9,7 +9,7 @@
 
 *We put medicine on the blockchain so counterfeiters can go to hell.*
 
-[🚀 Try Demo](#) • [🎬 Watch Video](#) • [🏆 Awards](#)
+[🚀 Try Demo](#) • [🎬 Watch Video](https://www.youtube.com/watch?v=6VTmJLKBKRA) • [🏆 Awards](#)
 
 </div>
 
